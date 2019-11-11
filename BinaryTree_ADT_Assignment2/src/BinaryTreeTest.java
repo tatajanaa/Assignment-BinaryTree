@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BinaryTreeTest {
-	int root = 8;
+	int root;
 	BinaryTree btree = new BinaryTree(root);
 
 	@Before
@@ -26,7 +26,7 @@ public class BinaryTreeTest {
 	@Test
 	public void testContains() {
 
-		assertTrue(btree.contains(8));
+		assertTrue(btree.contains(0));
 		btree.addElement(11);
 		assertTrue(btree.contains(11));
 	}
@@ -42,11 +42,20 @@ public class BinaryTreeTest {
 
 	@Test
 	public void testIsEmpty() {
-		assertFalse(btree.isEmpty());
+		BinaryTree binarytree = new BinaryTree();
+		assertTrue(binarytree.isEmpty());
 	}
 
 	@Test
 	public void testPreOrder() {
 		//how to test this
+	}
+	@Test
+	public void testAddElement() {
+	assertEquals(1, btree.size());	
+	btree.addElement(74);
+	btree.addElement(88);
+	assertEquals(3,btree.size());
+	
 	}
 }
