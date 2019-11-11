@@ -19,6 +19,7 @@ BinaryTree btree = new BinaryTree(root);
 	public void testSize() {
 		btree.addElement(10);
 		btree.addElement(11);
+		assertEquals(3, btree.size());
 	}
 
 }
