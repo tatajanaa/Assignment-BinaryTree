@@ -7,7 +7,7 @@ import org.junit.Test;
 public class BinaryTreeTest {
 	int root;
 	BinaryTree btree = new BinaryTree(root);
-
+	BinaryTree binarytree = new BinaryTree();
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -18,6 +18,7 @@ public class BinaryTreeTest {
 
 	@Test
 	public void testSize() {
+		assertEquals(1, btree.size()); //size with only root
 		btree.addElement(10);
 		btree.addElement(11);
 		assertEquals(3, btree.size());
@@ -42,7 +43,7 @@ public class BinaryTreeTest {
 
 	@Test
 	public void testIsEmpty() {
-		BinaryTree binarytree = new BinaryTree();
+		
 		assertTrue(binarytree.isEmpty());
 	}
 
@@ -52,10 +53,16 @@ public class BinaryTreeTest {
 	}
 	@Test
 	public void testAddElement() {
+		
+		assertEquals(0, binarytree.size());
+		binarytree.addElement(159);
+		assertEquals(1, binarytree.size());
+	
 	assertEquals(1, btree.size());	
 	btree.addElement(74);
 	btree.addElement(88);
 	assertEquals(3,btree.size());
 	
 	}
+	
 }
