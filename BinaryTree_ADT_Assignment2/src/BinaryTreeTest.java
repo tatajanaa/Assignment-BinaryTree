@@ -84,6 +84,18 @@ public class BinaryTreeTest {
 	}
 	
 	@Test
+	public void testPostOrder()
+	{
+		BinaryTree tBT = new BinaryTree(56);
+		tBT.addElement(6);
+		tBT.addElement(199);
+		tBT.addElement(4);
+
+		assertEquals("4 6 199 56 ", tBT.postOrder());
+		
+	}
+	
+	@Test
 	public void testLevelOrder()
 	{
 		BinaryTree tBT = new BinaryTree(56);
