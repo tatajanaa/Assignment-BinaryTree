@@ -34,10 +34,10 @@ public class BinaryTreeTest {
 
 	@Test
 	public void testHeight() {
-		assertEquals(1, btree.height());
+		assertEquals(0, btree.height());
 		btree.addElement(10);
 		btree.addElement(11);
-		assertEquals(3, btree.height());
+		assertEquals(2, btree.height());
 
 	}
 
@@ -63,6 +63,16 @@ public class BinaryTreeTest {
 	btree.addElement(88);
 	assertEquals(3,btree.size());
 	
+	}
+	
+	public void testInOrder()
+	{
+		BinaryTree tBT = new BinaryTree(7);
+		tBT.addElement(27);
+		tBT.addElement(2);
+		tBT.addElement(29);
+		assertEquals("2 7 7 29", tBT.inOrder());
+		
 	}
 	
 }

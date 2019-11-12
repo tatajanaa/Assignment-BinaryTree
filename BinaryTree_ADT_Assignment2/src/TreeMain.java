@@ -26,9 +26,10 @@ public class TreeMain {
 
 		tree.postOrder();
 		System.out.println();
-		tree.inOrder();
+		System.out.println("In order:");
+		System.out.println(tree.inOrder());
 
-		System.out.println("\n" + " level order");
+		System.out.println("\n" + "level order");
 
 		tree.levelOrder();
 
