@@ -8,36 +8,37 @@ public class TreeMain {
 
 		
 		tree.addElement(6);
-		tree.addElement(4);
-		tree.addElement(9);
-		tree.addElement(11);
-		tree.addElement(14);
-		tree.addElement(8);
 		tree.addElement(199);
+		tree.addElement(4);
+
 		
 
 
 		print.printTree(tree.getRoot());
 		System.out.println();
+		System.out.println("Pre order:" + tree.preOrder());
 
-		tree.preOrder();
 
 		System.out.println();
+
+		System.out.println("Post order:" + tree.postOrder());
 
 		tree.postOrder();
 		System.out.println();
-		System.out.println("In order:");
-		System.out.println(tree.inOrder());
+		System.out.println("In order:"+ tree.inOrder());
+		
 
-		System.out.println("\n" + "level order");
+		System.out.println("\n" + "level order "+ tree.levelOrder());
 
 		tree.levelOrder();
 
 		System.out.println("\n" + "Number of elements in the tree = " + tree.size());
 
 		System.out.println(tree.contains(2));
+		
+		System.out.println("Height: "+ tree.height());
 
-		System.out.println(tree.height());
+
 
 	
 

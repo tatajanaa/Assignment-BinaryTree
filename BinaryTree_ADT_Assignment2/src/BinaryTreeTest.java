@@ -47,10 +47,7 @@ public class BinaryTreeTest {
 		assertTrue(binarytree.isEmpty());
 	}
 
-	@Test
-	public void testPreOrder() {
-		//how to test this
-	}
+
 	@Test
 	public void testAddElement() {
 		
@@ -72,6 +69,29 @@ public class BinaryTreeTest {
 		tBT.addElement(2);
 		tBT.addElement(29);
 		assertEquals("2 7 7 29", tBT.inOrder());
+		
+	}
+	@Test
+	public void testPreOrder()
+	{
+		BinaryTree tBT = new BinaryTree(56);
+		tBT.addElement(6);
+		tBT.addElement(199);
+		tBT.addElement(4);
+
+		assertEquals("56 6 4 199 ", tBT.preOrder());
+		
+	}
+	
+	@Test
+	public void testLevelOrder()
+	{
+		BinaryTree tBT = new BinaryTree(56);
+		tBT.addElement(6);
+		tBT.addElement(199);
+		tBT.addElement(4);
+
+		assertEquals("56 6 199 4 ", tBT.levelOrder());
 		
 	}
 	

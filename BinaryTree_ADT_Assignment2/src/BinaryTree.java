@@ -112,17 +112,20 @@ public class BinaryTree implements BinarySearchTreeADT {
 	 * 
 	 * @param node
 	 */
-	private void traversalPreorder(BinaryTreeNode node) {
-		
+	String str = "";
+	private String traversalPreorder(BinaryTreeNode node) {
+	
 		if (node != null) {
-			System.out.print(" " + node.element);
+			str = str + node.element + " ";
 			traversalPreorder(node.leftChild);
 			traversalPreorder(node.rightChild);
 		}
+		
+		return str;
 	}
 
-	public void preOrder() {
-		traversalPreorder(root);
+	public String preOrder() {
+		return traversalPreorder(root);
 	}
 
 	/**
@@ -131,16 +134,18 @@ public class BinaryTree implements BinarySearchTreeADT {
 	 * 
 	 * @param node
 	 */
-	private void traversePostOrder(BinaryTreeNode node) {
+	String string="";
+	private String traversePostOrder(BinaryTreeNode node) {
 		if (node != null) {
 			traversePostOrder(node.leftChild);
 			traversePostOrder(node.rightChild);
-			System.out.print(" " + node.element);
+			string = string + node.element + " ";
 		}
+		return string;
 	}
 
-	public void postOrder() {
-		traversePostOrder(root);
+	public String postOrder() {
+	 return	traversePostOrder(root);
 	}
 
 	/**
@@ -149,9 +154,10 @@ public class BinaryTree implements BinarySearchTreeADT {
 	 * This method extracts each node from the list, prints its values, then add its
 	 * children to the queue
 	 */
-	public void levelOrder() {
+	String s = "";
+	public String levelOrder() {
 		if (root == null) {
-			return;
+			return "";
 		}
 
 		Queue<BinaryTreeNode> nodes = new LinkedList<BinaryTreeNode>();
@@ -161,7 +167,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 
 			BinaryTreeNode node = nodes.remove();
 
-			System.out.print(" " + node.element);
+			s = s + node.element + " ";
 
 			if (node.leftChild != null) {
 				nodes.add(node.leftChild);
@@ -171,6 +177,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 				nodes.add(node.rightChild);
 			}
 		}
+		return s;
 	}
 
 	private int heightOfTree(BinaryTreeNode root) {
