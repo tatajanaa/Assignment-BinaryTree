@@ -65,4 +65,14 @@ public class BinaryTreeTest {
 	
 	}
 	
+	public void testInOrder()
+	{
+		BinaryTree tBT = new BinaryTree(7);
+		tBT.addElement(27);
+		tBT.addElement(2);
+		tBT.addElement(29);
+		assertEquals("2 7 7 29", tBT.inOrder());
+		
+	}
+	
 }
