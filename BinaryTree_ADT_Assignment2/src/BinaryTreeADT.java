@@ -8,7 +8,7 @@ public interface BinaryTreeADT {
 	
 	boolean contains(int targetElement); //Determines if an element is present in the tree 
 	
-	void inOrder(); // Returns an inOrder representation of the tree
+	String inOrder(); // Returns an inOrder representation of the tree
 	
 	void preOrder(); // Returns an preOrder representation of the tree
 	

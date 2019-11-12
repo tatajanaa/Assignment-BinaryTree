@@ -83,17 +83,27 @@ public class BinaryTree implements BinarySearchTreeADT {
 	 * 
 	 * @param node
 	 */
-	private void traversalInOrder(BinaryTreeNode node) {
-		if (node != null) {
+	String tElement = "";
+	private String traversalInOrder(BinaryTreeNode node) {
+		
+		
+		if (node != null) 
+		{
 			traversalInOrder(node.leftChild);
-			System.out.print(" " + node.element);
+			
+			tElement = tElement + node.element + " ";
 			traversalInOrder(node.rightChild);
-		}
-
+		}	
+		return tElement;
 	}
 
-	public void inOrder() {
-		traversalInOrder(root);
+	
+	public String inOrder() 
+	{
+		
+		
+	    return traversalInOrder(root);
+	    
 	}
 
 	/**
@@ -103,12 +113,12 @@ public class BinaryTree implements BinarySearchTreeADT {
 	 * @param node
 	 */
 	private void traversalPreorder(BinaryTreeNode node) {
+		
 		if (node != null) {
 			System.out.print(" " + node.element);
 			traversalPreorder(node.leftChild);
 			traversalPreorder(node.rightChild);
 		}
-
 	}
 
 	public void preOrder() {
