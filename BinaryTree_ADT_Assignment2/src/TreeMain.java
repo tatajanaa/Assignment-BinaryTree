@@ -38,7 +38,7 @@ public class TreeMain {
 
 		System.out.println(tree.height());
 
-		
+	
 
 	}
 
