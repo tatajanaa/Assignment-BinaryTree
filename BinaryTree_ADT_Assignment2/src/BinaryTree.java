@@ -165,7 +165,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 
 	private int heightOfTree(BinaryTreeNode root) {
 		if (root == null) {
-			return 0;
+			return -1;
 		}
 
 		int left = 1 + heightOfTree(root.leftChild);
