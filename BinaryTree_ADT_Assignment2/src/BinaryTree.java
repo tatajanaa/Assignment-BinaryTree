@@ -239,7 +239,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 	
 	public void addElement(int value) {
 		
-		add(this.root,value);
+		root = add(this.root,value);
 	
 	
 		

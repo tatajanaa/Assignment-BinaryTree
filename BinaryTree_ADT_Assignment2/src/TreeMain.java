@@ -3,20 +3,15 @@ public class TreeMain {
 
 	public static void main(String[] args) {
 
-		BinaryTree tree = new BinaryTree(136);
+		BinaryTree tree = new BinaryTree(159);
 		BinaryTreePrint print = new BinaryTreePrint();
 
 		
 		
-		tree.addElement(689);
-		tree.addElement(300);
-		tree.addElement(239);
-		tree.addElement(697);
-		tree.addElement(389);
-		tree.addElement(289);
-		tree.addElement(200);
-		
-        
+		tree.addElement(898);
+		tree.addElement(96);
+		tree.addElement(87);
+		tree.addElement(20);
 		
 
        
