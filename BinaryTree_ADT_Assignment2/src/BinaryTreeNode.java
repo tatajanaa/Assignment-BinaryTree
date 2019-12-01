@@ -8,8 +8,6 @@ public class BinaryTreeNode {
 	public BinaryTreeNode(int element) {
 
 		this.element = element;
-		leftChild = null;
-		rightChild = null;
 	}
 	
 	public int getHeight(){

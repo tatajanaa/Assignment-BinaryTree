@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BinaryTreeTest {
-	int root;
+	int root = 87;
 	BinaryTree btree = new BinaryTree(root);
 	BinaryTree binarytree = new BinaryTree();
 	@Before
@@ -27,7 +27,7 @@ public class BinaryTreeTest {
 	@Test
 	public void testContains() {
 
-		assertTrue(btree.contains(0));
+		assertTrue(btree.contains(87));
 		btree.addElement(11);
 		assertTrue(btree.contains(11));
 	}
@@ -35,10 +35,12 @@ public class BinaryTreeTest {
 	@Test
 	public void testHeight() {
 		assertEquals(0, btree.heightT());
-		btree.addElement(10);
-		btree.addElement(11);
-		assertEquals(2, btree.heightT());
-
+		btree.addElement(65);
+		assertEquals(1, btree.heightT());
+		btree.addElement(165);
+		btree.addElement(265);
+		btree.addElement(365);
+		assertEquals(0, btree.heightT());
 	}
 
 	@Test
@@ -54,21 +56,22 @@ public class BinaryTreeTest {
 		assertEquals(0, binarytree.size());
 		binarytree.addElement(159);
 		assertEquals(1, binarytree.size());
-	
-	assertEquals(1, btree.size());	
-	btree.addElement(74);
-	btree.addElement(88);
-	assertEquals(3,btree.size());
+		binarytree.addElement(898);
+		assertEquals(2, binarytree.size());
+		binarytree.addElement(96);
+		assertEquals(3, binarytree.size());
+		binarytree.addElement(87);
+		assertEquals(4, binarytree.size());
 	
 	}
-	
+	@Test
 	public void testInOrder()
 	{
 		BinaryTree tBT = new BinaryTree(7);
 		tBT.addElement(27);
 		tBT.addElement(2);
 		tBT.addElement(29);
-		assertEquals("2 7 7 29", tBT.inOrder());
+		assertEquals("2 7 27 29", tBT.inOrder());
 		
 	}
 	@Test
