@@ -225,7 +225,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 
 		root= add(this.root,value);
 
-		root = add(this.root,value);
+	
 
 	
 	
