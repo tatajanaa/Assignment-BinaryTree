@@ -120,4 +120,16 @@ public class BinaryTreeTest {
 		assertEquals(-1, balance);
 
 	}
+	
+	@Test 
+	public void testRemoveElement() {
+		btree.addElement(787);
+		btree.addElement(150);
+		btree.addElement(49);
+		btree.addElement(156);
+		assertEquals(5, btree.size());
+		
+		btree.removeElement(156);
+		assertEquals(4, btree.size());
+	}
 }
