@@ -237,9 +237,10 @@ public class BinaryTree implements BinarySearchTreeADT {
 		return root + "\n";
 	}
 
-	public int removeElement(int targetElement) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void removeElement(int targetElement) {
+	    
+		root=remove(this.root, targetElement);
+	
 	}
 	
 	
@@ -328,4 +329,83 @@ public class BinaryTree implements BinarySearchTreeADT {
 	  }
 	  
 	  
+	  private BinaryTreeNode remove(BinaryTreeNode node, int value) {
+		    if (node == null)
+		      return node;
+		 
+		    if (value < node.getElement()) { // go to the left recursively
+		      node.setLeftChild(remove(node.getLeftChild(), value));
+		    } else if (value > node.getElement()) { // go to the right recursively
+		      node.setRightChild(remove(node.getRightChild(), value));
+		    } else { // find node
+		 
+		      if (node.getLeftChild() == null && node.getRightChild() == null) {
+		        System.out.println("remove leaf node [" + node.getElement() + "]");
+		        return null;
+		      }
+		 
+		      if (node.getLeftChild() == null) {
+		        System.out.println("remove the right child [" + node.getElement() + "]");
+		        BinaryTreeNode tempNode = node.getRightChild();
+		        node = null;
+		        return tempNode;
+		      } else if (node.getRightChild() == null) {
+		        System.out.println("remove the left child [" + node.getElement() + "]");
+		        BinaryTreeNode tempNode = node.getLeftChild();
+		        node = null;
+		        return tempNode;
+		      }
+		 
+		      System.out.println("remove node with two children");
+		      BinaryTreeNode tempNode = getPredecessor(node.getLeftChild());
+		 
+		      System.out.println("replace with Predecessor [" + tempNode.getElement() + "]");
+		      node.setElement(tempNode.getElement());
+		      node.setLeftChild(remove(node.getLeftChild(), tempNode.getElement()));
+		    }
+		 
+		    node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
+		 
+		    // have to check on every delete operation whether the tree has become
+		    // unbalanced or not !!!
+		    return checkBalance(node);
+		  }
+	  
+	  private BinaryTreeNode checkBalance(BinaryTreeNode node) {
+		    int balance = getBalance(node);
+		 
+		    // left heavy -> left-right heavy or left-left heavy
+		    if (balance > 1) {
+		      // if left-right: left rotation before right rotation
+		      if (getBalance(node.getLeftChild()) < 0) {
+		        node.setLeftChild(leftRotation(node.getLeftChild()));
+		      }
+		 
+		      // left-left
+		      return rightRotation(node);
+		    }
+		 
+		    // right heavy -> left-right heavy or right-right heavy
+		    if (balance < -1) {
+		      // if right-left: right rotation before left rotation
+		      if (getBalance(node.getRightChild()) > 0) {
+		        node.setRightChild(rightRotation(node.getRightChild()));
+		      }
+		 
+		      // right-right
+		      return leftRotation(node);
+		    }
+		 
+		    return node;
+		  }
+	  
+	  private BinaryTreeNode getPredecessor(BinaryTreeNode node) {
+		  
+		  BinaryTreeNode predecessor = node;
+		 
+		    while (predecessor.getRightChild() != null)
+		      predecessor = predecessor.getRightChild();
+		 
+		    return predecessor;
+		  }
 }

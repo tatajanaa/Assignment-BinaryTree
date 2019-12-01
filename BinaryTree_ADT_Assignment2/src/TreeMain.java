@@ -10,21 +10,18 @@ public class TreeMain {
 		
 
 		tree.addElement(688);
-		tree.addElement(898);
-		tree.addElement(700);
-		tree.addElement(500);
-		tree.addElement(620);
-		tree.addElement(610);
-		tree.addElement(615);
+        tree.addElement(596);
+		tree.addElement(567);
+		tree.addElement(20);
 		
+		
+		
+		tree.removeElement(567);
 		
 		
         
 
-		tree.addElement(898);
-		tree.addElement(96);
-		tree.addElement(87);
-		tree.addElement(20);
+		
 
 		
 
