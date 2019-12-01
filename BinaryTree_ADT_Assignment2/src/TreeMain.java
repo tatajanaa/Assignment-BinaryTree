@@ -3,17 +3,23 @@ public class TreeMain {
 
 	public static void main(String[] args) {
 
-		BinaryTree tree = new BinaryTree(56);
+		BinaryTree tree = new BinaryTree(136);
 		BinaryTreePrint print = new BinaryTreePrint();
 
 		
-		tree.addElement(6);
-		tree.addElement(199);
-		tree.addElement(4);
-
+		
+		tree.addElement(689);
+		tree.addElement(300);
+		tree.addElement(239);
+		tree.addElement(697);
+		tree.addElement(389);
+		tree.addElement(289);
+		tree.addElement(200);
+		
+        
 		
 
-
+       
 		print.printTree(tree.getRoot());
 		System.out.println();
 		System.out.println("Pre order:" + tree.preOrder());
@@ -36,10 +42,10 @@ public class TreeMain {
 
 		System.out.println(tree.contains(2));
 		
-		System.out.println("Height: "+ tree.height());
+		System.out.println("Height: "+ tree.heightT());
 
-
-
+		
+	
 	
 
 	}

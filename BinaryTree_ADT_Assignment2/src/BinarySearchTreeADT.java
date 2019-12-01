@@ -2,8 +2,7 @@
 public interface BinarySearchTreeADT extends BinaryTreeADT {
 	
 	
-	void addElement(int element);
+	BinaryTreeNode add(BinaryTreeNode node,int value);
 	int removeElement(int targetElement);
-	
-
+  
 }

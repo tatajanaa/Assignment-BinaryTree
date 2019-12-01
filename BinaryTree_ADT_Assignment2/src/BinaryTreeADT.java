@@ -16,6 +16,6 @@ public interface BinaryTreeADT {
 	
 	String levelOrder(); // Returns an level Order representation of the tree
 	
-	int height(); //Returns the height of the tree
+	int heightT(); //Returns the height of the tree
 	
 }

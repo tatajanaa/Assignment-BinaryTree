@@ -5,6 +5,7 @@ import java.util.Stack;
 public class BinaryTree implements BinarySearchTreeADT {
 
 	BinaryTreeNode root;
+	private int balance;
 
 	public BinaryTree(int root) {
 
@@ -53,6 +54,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 		return size;
 
 	}
+	
 
 	/**
 	 * recursive method that traverses the tree. search for the value by comparing
@@ -191,9 +193,11 @@ public class BinaryTree implements BinarySearchTreeADT {
 		return Math.max(left, right);
 	}
 
-	public int height() {
-		return heightOfTree(root);
+	public int heightT() {
+	return heightOfTree(root);
 	}
+	
+
 
 	private BinaryTreeNode addNode(BinaryTreeNode current, int value) {
 		if (current == null) {
@@ -211,9 +215,34 @@ public class BinaryTree implements BinarySearchTreeADT {
 
 		return current;
 	}
+	
+	public BinaryTreeNode  add(BinaryTreeNode node, int value) {
+		if (node == null) {
+			return this.root= new BinaryTreeNode(value);
+			
+		}
 
+		if (this.root!=null) {
+			
+			if(value< node.getElement()) {
+			
+					node.setLeftChild(add(node.getLeftChild(),value));
+				} else {
+					
+					node.setRightChild(add(node.getLeftChild(),value));
+				}
+		}	
+		 node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
+		  return rebalance(node,value);
+	}
+	
+	
 	public void addElement(int value) {
-		root = addNode(root, value);
+		
+		add(this.root,value);
+	
+	
+		
 
 	}
 
@@ -225,5 +254,103 @@ public class BinaryTree implements BinarySearchTreeADT {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	
+ 
+	private BinaryTreeNode rebalance(BinaryTreeNode node,int value) {
+	
+		 
+		  int balance = getBalance(node); // balance = leftNode.height - rightNode.height
+		  
+		  // left-left
+		  if (balance > 1 && value < node.getLeftChild().getElement()) {
+		    return rightRotation(node);
+		  }
+		 
+		  // right-right
+		  if (balance < -1 && value> node.getRightChild().getElement()) {
+		    return leftRotation(node);
+		  }
+		 
+		  // left-right
+		  if (balance > 1 && value > node.getLeftChild().getElement()) {
+		    node.setLeftChild(leftRotation(node.getLeftChild()));
+		    return rightRotation(node);
+		  }
+		 
+		  // right-left
+		  if (balance < -1 && value < node.getRightChild().getElement()) {
+		    node.setRightChild(rightRotation(node.getRightChild()));
+		    return leftRotation(node);
+		  }
+		  return node;
+		}
+	
+	private int height(BinaryTreeNode node) {
+		 
+	    if (node == null) {
+	      return -1;
+	    }
+	 
+	    return node.getHeight();
+	  }
+	
+	public int getBalance(BinaryTreeNode node)
+	{    if(node==null) {
+		   return 0;}
+	
+	 return height(node.getLeftChild()) - height(node.getRightChild());}
+	
+	public void setBalance(int balance)
+	{
+		this.balance=balance;
+	}
+	
+	
+	private BinaryTreeNode rightRotation(BinaryTreeNode node) {
+	    System.out.println("right Rotation on node [" + node + "]");
+	    
+	    BinaryTreeNode newParentNode = node.getLeftChild();
+	    BinaryTreeNode mid = newParentNode.getRightChild();
+	 
+	    newParentNode.setRightChild(node);
+	    node.setLeftChild(mid);
+	 
+	    node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
+	    newParentNode
+	        .setHeight(Math.max(height(newParentNode.getLeftChild()), height(newParentNode.getRightChild())) + 1);
+	 
+	    return newParentNode;
+	  }
+	 
+	  private  BinaryTreeNode leftRotation( BinaryTreeNode node) {
+	    System.out.println("left Rotation on node [" + node + "]");
+	    
+	    BinaryTreeNode newParentNode = node.getRightChild();
+	    BinaryTreeNode mid = newParentNode.getLeftChild();
+	 
+	    newParentNode.setLeftChild(node);
+	    node.setRightChild(mid);
+	 
+	    node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
+	    newParentNode
+	        .setHeight(Math.max(height(newParentNode.getLeftChild()), height(newParentNode.getRightChild())) + 1);
+	 
+	    return newParentNode;
+	  }
+	  public  BinaryTreeNode leftRightRotation( BinaryTreeNode node) { // input C
+		  // leftRotation(A) -> result B, then set B as left node of C
+		  node.setLeftChild(leftRotation(node.getLeftChild()));
+		  
+		  // rightRotation(C)
+		  return rightRotation(node);
+		}
+	  public  BinaryTreeNode rightLeftRotation( BinaryTreeNode node) { // input A
+		  // rightRotation(C) -> result B, then set B as right node of A
+		  node.setRightChild(rightRotation(node.getRightChild()));
+		  
+		  // leftRotation(A)  
+		  return leftRotation(node);
+		}
+	
 }

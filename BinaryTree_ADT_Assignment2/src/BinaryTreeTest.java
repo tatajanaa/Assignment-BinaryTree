@@ -34,10 +34,10 @@ public class BinaryTreeTest {
 
 	@Test
 	public void testHeight() {
-		assertEquals(0, btree.height());
+		assertEquals(0, btree.heightT());
 		btree.addElement(10);
 		btree.addElement(11);
-		assertEquals(2, btree.height());
+		assertEquals(2, btree.heightT());
 
 	}
 

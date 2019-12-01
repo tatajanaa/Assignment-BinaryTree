@@ -3,6 +3,7 @@ public class BinaryTreeNode {
 
 	int element;
 	BinaryTreeNode leftChild, rightChild;
+	private int height;
 
 	public BinaryTreeNode(int element) {
 
@@ -10,7 +11,17 @@ public class BinaryTreeNode {
 		leftChild = null;
 		rightChild = null;
 	}
-
+	
+	public int getHeight(){
+		return height;
+	}
+	
+	public void setHeight(int height){
+		this.height=height;
+	}
+	
+	
+	
 	/*
 	 * Returns the element from the Node
 	 */
@@ -35,8 +46,8 @@ public class BinaryTreeNode {
 	/*
 	 * Add a left child to the Node
 	 */
-	public void setLeftChild(int left) {
-		this.leftChild = new BinaryTreeNode(left);
+	public void setLeftChild(BinaryTreeNode left) {
+		this.leftChild=left;
 	}
 
 	/*
@@ -49,8 +60,8 @@ public class BinaryTreeNode {
 	/*
 	 * Add a right child to the Node
 	 */
-	public void setRightChild(int right) {
-		this.rightChild = new BinaryTreeNode(right);
+	public void setRightChild(BinaryTreeNode right) {
+		this.rightChild = right;
 	}
 
 
