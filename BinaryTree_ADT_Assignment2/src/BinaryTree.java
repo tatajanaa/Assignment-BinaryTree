@@ -248,7 +248,7 @@ public class BinaryTree implements BinarySearchTreeADT {
 	private BinaryTreeNode rebalance(BinaryTreeNode node,int value) {
 	
 		 
-		  int balance = getBalance(node); // balance = leftNode.height - rightNode.height
+		  int balance = getBalance(node); 
 		  
 		  // left-left
 		  if (balance > 1 && value < node.getLeftChild().getElement()) {
@@ -333,11 +333,11 @@ public class BinaryTree implements BinarySearchTreeADT {
 		    if (node == null)
 		      return node;
 		 
-		    if (value < node.getElement()) { // go to the left recursively
+		    if (value < node.getElement()) { 
 		      node.setLeftChild(remove(node.getLeftChild(), value));
-		    } else if (value > node.getElement()) { // go to the right recursively
+		    } else if (value > node.getElement()) { 
 		      node.setRightChild(remove(node.getRightChild(), value));
-		    } else { // find node
+		    } else {
 		 
 		      if (node.getLeftChild() == null && node.getRightChild() == null) {
 		        System.out.println("remove leaf node [" + node.getElement() + "]");
@@ -366,33 +366,29 @@ public class BinaryTree implements BinarySearchTreeADT {
 		 
 		    node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
 		 
-		    // have to check on every delete operation whether the tree has become
-		    // unbalanced or not !!!
+	
 		    return checkBalance(node);
 		  }
 	  
 	  private BinaryTreeNode checkBalance(BinaryTreeNode node) {
 		    int balance = getBalance(node);
 		 
-		    // left heavy -> left-right heavy or left-left heavy
+
 		    if (balance > 1) {
-		      // if left-right: left rotation before right rotation
+	
 		      if (getBalance(node.getLeftChild()) < 0) {
 		        node.setLeftChild(leftRotation(node.getLeftChild()));
 		      }
 		 
-		      // left-left
 		      return rightRotation(node);
 		    }
-		 
-		    // right heavy -> left-right heavy or right-right heavy
 		    if (balance < -1) {
-		      // if right-left: right rotation before left rotation
+		   
 		      if (getBalance(node.getRightChild()) > 0) {
 		        node.setRightChild(rightRotation(node.getRightChild()));
 		      }
 		 
-		      // right-right
+		     
 		      return leftRotation(node);
 		    }
 		 
